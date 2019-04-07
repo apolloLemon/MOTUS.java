@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 class Game {
 	Board[] boards;
 	Dictionary dictionary;
@@ -23,7 +26,7 @@ class Line {
 	void ColorClues(){return;}
 	void Prefil(){return;}
 	void ReadPlayer(){return;}
-	boolean CheckWord(){return;}
+	boolean CheckWord(){return true;}
 }
 
 class Dictionary {
@@ -61,5 +64,5 @@ class Clue {
 	char[] correct; //letter correctly placed
 	char[] inWord; //lerrer in the word
 
-	void Update (Clue new) {return;} //take in new clue info
+	void Update (Clue newClue) {return;} //take in new clue info
 }
