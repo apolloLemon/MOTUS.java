@@ -27,12 +27,33 @@ class Line {
 }
 
 class Dictionary {
-	String[] words;
+	ArrayList<String> words;
 	String word;
 
 	boolean wordMatch(String s){return true;}
 	void newWord(){return;}
-	void loadDictionary(){return;}
+
+	void loadDictionary(String fileName) throws IOException{ 
+	//copied from TP7
+		//System.out.println("lire");
+		BufferedReader in = null;
+		try {
+			// ouverture du fichier
+			in = new BufferedReader(
+				new FileReader(fileName)
+			);
+			// lecture des données
+			String line = null;
+			while ((line=in.readLine()) != null) {
+				this.words.add(line);
+			}
+		} finally {
+		// fermeture du fichier
+			if (in != null)      
+			in.close();
+		}
+	}
+
 	Clue getClues() {return new Clue();}
 }
 
