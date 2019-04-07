@@ -5,8 +5,9 @@ class Game {
 	Board[] boards;
 	Dictionary dictionary;
 	int score;
+	Random r;
 
-	void GenerateBoards(){return;}
+	void GenerateBoards(){return;} //needs Board Constructor
 }
 
 class Board {
@@ -32,9 +33,12 @@ class Line {
 class Dictionary {
 	ArrayList<String> words;
 	String word;
+	Random r;
 
 	boolean wordMatch(String s){return true;}
-	void newWord(){return;}
+	void newWord(){
+		word = words.get(r.nextInt(words.size()));
+	}
 
 	void loadDictionary(String fileName) throws IOException{ 
 	//copied from TP7
