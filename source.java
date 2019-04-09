@@ -22,7 +22,7 @@ class Board {
 
 class Line {
 	boolean played; //flag to see if the line has been played
-	char[] chars;
+	Chr[] chars;
 
 	void ColorClues(){return;}
 	void Prefil(){return;}
@@ -30,12 +30,27 @@ class Line {
 	boolean CheckWord(){return true;}
 }
 
+class Chr {
+	char chr;
+	JLabel b;	
+
+	void set(char a){
+		chr=a;
+		b.setText(chr);
+	}
+
+	void color(Clr a){return;}
+}
+
 class Dictionary {
 	ArrayList<String> words;
 	String word;
 	Random r;
 
-	boolean wordMatch(String s){return true;}
+	boolean wordMatch(String s){
+		return word.equals(s);
+	}
+	
 	void newWord(){
 		word = words.get(r.nextInt(words.size()));
 	}
@@ -61,12 +76,28 @@ class Dictionary {
 		}
 	}
 
-	Clue getClues() {return new Clue();}
+	Clue getClues(String s) {
+		Clue out = new Clue();
+
+		for(int i=0;i<s.size();i++){
+			if(word[i]==s[i]){
+				out.correct[i]=word[i];
+			}
+		}
+
+		return out;
+	}
 }
 
 class Clue {
 	char[] correct; //letter correctly placed
 	char[] inWord; //lerrer in the word
+
+	void initCorrect(){
+		for(char a : correct) {
+			a=".";
+		}
+	}
 
 	void Update (Clue newClue) {return;} //take in new clue info
 }
